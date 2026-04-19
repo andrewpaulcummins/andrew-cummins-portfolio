@@ -50,7 +50,7 @@ export const projects = [
     desc: 'A Playwright (Java) framework with parallel execution, network interception, and visual regression testing. Targets the second most requested skill set in SDET roles.',
     stack: [['Playwright','orange'],['Java','orange'],['Parallel exec','blue'],['Visual regression','blue'],['PicoContainer','orange'],['GitHub Actions','green']],
     links: [
-      { label: 'View on GitHub', url: 'https://github.com/andrewpaulcummins/playwright-framework' },
+      { label: 'View on GitHub', url: 'https://github.com/andrewpaulcummins/playwright-bdd-framework' },
       { label: 'Allure report',  url: 'https://andrewpaulcummins.github.io/playwright-bdd-framework/', green: true },
     ],
   },
@@ -67,7 +67,7 @@ export const projects = [
   },
   {
     id: 'portfolio', featured: false,
-    title: 'This portfolio (v2)',
+    title: 'This portfolio',
     badge: 'live', badgeLabel: 'Live',
     desc: "Built with React and Vite. Having working knowledge of how frontend and backend fit together makes me a sharper tester, I know what I'm testing, not just how to test it.",
     stack: [['React','blue'],['Vite','blue'],['CSS3','blue'],['IntersectionObserver','purple']],
@@ -83,6 +83,83 @@ export const facts = [
   ['ci_platforms', 'GitHub Actions · Jenkins'],
   ['availability', 'Open to opportunities', 'hl'],
   ['github',       'andrewpaulcummins', 'link'],
+]
+
+export const experience = [
+  {
+    period: 'Sept 2024 — Present',
+    current: true,
+    role: 'Test Engineer',
+    company: 'Unum Ireland Ltd',
+    location: 'Carlow',
+    bullets: [
+      'Architected an enterprise-grade BDD framework (Selenium 4, Cucumber 7, TestNG, PicoContainer) enabling parallel, maintainable test execution at senior SDET level',
+      'AES-128 encrypted test data management with runtime decryption via environment variables — credentials never enter source control',
+      'CI/CD integration with GitHub Actions & Jenkins for scheduled, tag-based runs with automated Allure reporting',
+      'Sole technical authority on framework design, enforcing coding standards and architectural guidelines across the team',
+    ],
+    tags: [['Selenium 4','orange'],['Cucumber 7','orange'],['TestNG','orange'],['PicoContainer','orange'],['GitHub Actions','green'],['Jenkins','orange'],['Allure','green']],
+  },
+  {
+    period: 'Sept 2022 — Aug 2024',
+    current: false,
+    role: 'Software Engineer in Test',
+    company: 'Total Mobile Ltd',
+    location: 'Remote',
+    bullets: [
+      'Built a Java UI & API automation framework (Selenium WebDriver, TestNG, Cucumber) integrated into Azure DevOps CI/CD pipelines',
+      'Validated backend data integrity via SQL queries and REST API testing, supplementing UI coverage with service-level checks',
+      'Conducted code reviews enforcing layered architecture, zero static state, and JavaDoc standards',
+    ],
+    tags: [['Java','orange'],['Selenium','orange'],['Cucumber','orange'],['Azure DevOps','blue'],['REST Assured','purple'],['SQL','blue']],
+  },
+  {
+    period: 'Jul 2021 — Sept 2022',
+    current: false,
+    role: 'QA Engineer',
+    company: 'Total Mobile (Dublin) Ltd',
+    location: 'Dublin',
+    bullets: [
+      'Designed and executed manual test plans and regression suites for a Mobile Workforce Management System',
+      'Performance and load testing with k6; API validation with Postman; Docker for containerised, reproducible test environments',
+    ],
+    tags: [['Postman','purple'],['k6','green'],['Docker','blue'],['SQL','blue'],['JIRA','blue']],
+  },
+  {
+    period: 'May 2020 — May 2021',
+    current: false,
+    role: 'Front End Developer',
+    company: 'Vodafone Ireland Ltd',
+    location: 'Dublin',
+    bullets: [
+      'Implemented front-end features with a strong testability focus, authoring BDD automation scripts in JavaScript alongside active feature development',
+    ],
+    tags: [['JavaScript','blue'],['BDD','orange'],['Cucumber','orange']],
+  },
+  {
+    period: 'Sept 2019 — May 2020',
+    current: false,
+    role: 'Online QA Engineer & Test Automation Engineer',
+    company: 'Vodafone Ireland Ltd',
+    location: 'Dublin',
+    bullets: [
+      'Built a reusable BDD step library in JavaScript with Cucumber & WebDriver, cutting test authoring time across the team',
+      'Automated key user journeys and edge cases to increase regression coverage and reduce manual testing effort',
+    ],
+    tags: [['JavaScript','blue'],['WebDriver','orange'],['Cucumber','orange'],['BDD','orange']],
+  },
+  {
+    period: 'Sept 2015 — May 2019',
+    current: false,
+    edu: true,
+    role: 'BSc. Computer Science & Software Engineering',
+    company: 'Maynooth University',
+    location: 'Maynooth',
+    bullets: [
+      'Covered software development, data structures, algorithms, databases, and operating systems with a focus on code quality and maintainability',
+    ],
+    tags: [['Java','orange'],['OOP','orange'],['Web applications','blue'],['Databases','blue']],
+  },
 ]
 
 export const marqueeItems = [

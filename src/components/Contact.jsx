@@ -1,18 +1,16 @@
 import React from 'react'
-import SectionHead from './SectionHead'
 import { personal } from '../data/content'
 import { useReveal } from '../hooks/useReveal'
 
 export default function Contact() {
   const ref = useReveal()
   return (
-    <section id="contact" className="section">
-      <SectionHead idx="04 -" title="Get in touch" tag="Open to opportunities" />
+    <section id="contact" className="contact">
       <div className="contact-inner" ref={ref} data-reveal>
-        <h3 className="contact-headline">
+        <h2>
           Let's build something<span className="accent"> great.</span>
-        </h3>
-        <p className="contact-sub">
+        </h2>
+        <p>
           Open to SDET, automation engineering and QA roles in Ireland and remote.
           Drop me a message and I'll get back to you.
         </p>

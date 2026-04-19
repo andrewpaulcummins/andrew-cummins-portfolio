@@ -200,7 +200,7 @@ export default function Hero() {
         </div>
         <ScrambleHeading />
         <p className="hero-sub" data-reveal style={{ '--delay': '0.8s' }}>
-          <strong>SDET &amp; Automation Engineer</strong> — I build the <span className="hl">frameworks</span> that
+          <strong>SDET &amp; Automation Engineer</strong> - I build the <span className="hl">frameworks</span> that
           keep software honest. Enterprise-grade test automation, CI/CD pipelines,
           and the quality engineering mindset to back it up.
         </p>

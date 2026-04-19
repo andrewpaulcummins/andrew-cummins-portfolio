@@ -7,13 +7,13 @@ export default function About() {
   const ref = useReveal()
   return (
     <section id="about" className="section">
-      <SectionHead idx="03 -" title="About me" tag="Background" />
-      <div className="about-grid" ref={ref} data-reveal>
-        <div className="about-text">
+      <SectionHead idx="04 -" title="About me" tag="Background" />
+      <div className="about" ref={ref} data-reveal>
+        <div>
           <p>
             I'm an SDET and automation engineer based in <strong>Kilkenny, Ireland</strong>.
             I've spent years in quality engineering, but what sets me apart is that I don't
-            just run tests — I <strong>architect the infrastructure</strong> that makes
+            just run tests — I <span className="hl">architect the infrastructure</span> that makes
             testing at scale possible.
           </p>
           <p>
@@ -30,14 +30,14 @@ export default function About() {
             Let's talk <span className="arrow">→</span>
           </a>
         </div>
-        <div className="about-facts">
+        <div className="facts">
           {facts.map(([key, val, mod]) => (
-            <div key={key} className="fact-row">
-              <span className="fact-key">{key}</span>
+            <div key={key} className="fact">
+              <span className="k">{key}</span>
               {mod === 'link' ? (
-                <a href={personal.github} target="_blank" rel="noreferrer" className="fact-link">{val}</a>
+                <a href={personal.github} target="_blank" rel="noreferrer" className="v link">{val}</a>
               ) : (
-                <span className={`fact-val${mod === 'hl' ? ' hl' : ''}`}>{val}</span>
+                <span className={`v${mod === 'hl' ? ' hl' : ''}`}>{val}</span>
               )}
             </div>
           ))}

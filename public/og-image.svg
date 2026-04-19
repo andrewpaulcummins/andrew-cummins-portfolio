@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a0f"/>
+  <!-- grid -->
+  <defs>
+    <pattern id="g" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0M0 48V0" stroke="rgba(99,179,237,0.06)" stroke-width="1" fill="none"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <!-- accent line left -->
+  <rect x="80" y="160" width="3" height="310" fill="#63b3ed" rx="2"/>
+  <!-- AC monogram -->
+  <text x="107" y="230" font-family="monospace" font-size="13" fill="#63b3ed" letter-spacing="4" opacity="0.7">// portfolio</text>
+  <!-- name -->
+  <text x="104" y="320" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#f0f4f8" letter-spacing="-2">Andrew Cummins</text>
+  <!-- role -->
+  <text x="107" y="380" font-family="monospace" font-size="22" fill="#63b3ed" letter-spacing="2">SDET &amp; Automation Engineer</text>
+  <!-- tags -->
+  <rect x="107" y="415" width="130" height="28" rx="4" fill="rgba(99,179,237,0.12)" stroke="rgba(99,179,237,0.3)" stroke-width="1"/>
+  <text x="122" y="434" font-family="monospace" font-size="12" fill="#63b3ed" letter-spacing="1">Selenium 4</text>
+  <rect x="251" y="415" width="140" height="28" rx="4" fill="rgba(99,179,237,0.12)" stroke="rgba(99,179,237,0.3)" stroke-width="1"/>
+  <text x="266" y="434" font-family="monospace" font-size="12" fill="#63b3ed" letter-spacing="1">Playwright</text>
+  <rect x="405" y="415" width="150" height="28" rx="4" fill="rgba(99,179,237,0.12)" stroke="rgba(99,179,237,0.3)" stroke-width="1"/>
+  <text x="420" y="434" font-family="monospace" font-size="12" fill="#63b3ed" letter-spacing="1">Cucumber BDD</text>
+  <rect x="569" y="415" width="160" height="28" rx="4" fill="rgba(99,179,237,0.12)" stroke="rgba(99,179,237,0.3)" stroke-width="1"/>
+  <text x="584" y="434" font-family="monospace" font-size="12" fill="#63b3ed" letter-spacing="1">GitHub Actions</text>
+  <!-- location -->
+  <text x="107" y="480" font-family="monospace" font-size="14" fill="#718096" letter-spacing="1">Kilkenny, Ireland · Available in Dublin</text>
+  <!-- availability badge -->
+  <circle cx="1050" cy="100" r="6" fill="#48bb78"/>
+  <text x="1068" y="105" font-family="monospace" font-size="14" fill="#48bb78" letter-spacing="1">Available</text>
+  <!-- 7y stat -->
+  <text x="960" y="320" font-family="Georgia, serif" font-size="80" font-weight="bold" fill="#1a202c">7y</text>
+  <text x="960" y="320" font-family="Georgia, serif" font-size="80" font-weight="bold" fill="#f0f4f8" opacity="0.08">7y</text>
+  <text x="962" y="355" font-family="monospace" font-size="12" fill="#718096" letter-spacing="2">QA ENGINEERING</text>
+</svg>
