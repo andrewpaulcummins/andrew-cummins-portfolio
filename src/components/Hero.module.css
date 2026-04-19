@@ -191,9 +191,23 @@
   .hero {
     grid-template-columns: 1fr;
     padding: 7rem 1.5rem 3rem;
+    gap: 2.5rem;
   }
 
   .terminal {
-    display: none;
+    font-size: 0.72rem;
   }
+
+  .termBody {
+    padding: 1rem;
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 6rem 1rem 2.5rem; }
+  .sub { font-size: 0.95rem; }
+  .badge { font-size: 0.6rem; white-space: normal; text-align: left; }
+  .btn { padding: 0.75rem 1.25rem; font-size: 0.72rem; }
+  .terminal { display: none; }
 }

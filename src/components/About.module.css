@@ -64,7 +64,7 @@
   font-family: var(--font-mono);
   color: var(--accent);
   font-size: 0.73rem;
-  min-width: 120px;
+  width: 120px;
   flex-shrink: 0;
 }
 
@@ -85,4 +85,14 @@
     gap: 3rem;
     padding: 4rem 1.5rem;
   }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 3rem 1rem; }
+  .factRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  .factKey { width: auto; }
 }
