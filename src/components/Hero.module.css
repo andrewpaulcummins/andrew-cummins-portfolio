@@ -1,0 +1,199 @@
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 8rem 4rem 4rem;
+  gap: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  padding: 0.4rem 0.85rem;
+  border-radius: 2px;
+  margin-bottom: 1.75rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+}
+
+.accent {
+  color: var(--accent);
+  display: block;
+}
+
+.sub {
+  margin-top: 1.5rem;
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 38ch;
+  line-height: 1.75;
+}
+
+.sub strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.cta {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+  border: 1px solid transparent;
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: #000;
+  font-weight: 500;
+}
+
+.btnPrimary:hover {
+  background: var(--accent2);
+  transform: translateY(-2px);
+}
+
+.btnOutline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btnOutline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.terminal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.termBar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+}
+
+.dot2 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red {
+  background: #ef4444;
+}
+
+.yellow {
+  background: #eab308;
+}
+
+.green {
+  background: #22c55e;
+}
+
+.termTitle {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.termBody {
+  padding: 1.5rem 1.5rem 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.9;
+}
+
+.tLine {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.tOut {
+  color: var(--text);
+  padding-left: 1.25rem;
+}
+
+.prompt {
+  color: var(--accent);
+}
+
+.cmd {
+  color: #a5f3fc;
+}
+
+.key {
+  color: #c4b5fd;
+}
+
+.val {
+  color: var(--green);
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: var(--accent);
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 7rem 1.5rem 3rem;
+  }
+
+  .terminal {
+    display: none;
+  }
+}
