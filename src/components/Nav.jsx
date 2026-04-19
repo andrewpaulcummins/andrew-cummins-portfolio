@@ -1,52 +1,37 @@
 import React, { useState, useEffect } from 'react'
-import styles from './Nav.module.css'
-
-const links = [
-  { href: '#skills',   label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#about',    label: 'About' },
-  { href: '#contact',  label: 'Contact' },
-]
+import { personal } from '../data/content'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const on = () => setScrolled(window.scrollY > 30)
+    window.addEventListener('scroll', on, { passive: true })
+    return () => window.removeEventListener('scroll', on)
   }, [])
-
+  const links = [
+    ['skills',  '01', 'Skills'],
+    ['work',    '02', 'Work'],
+    ['about',   '03', 'About'],
+    ['contact', '04', 'Contact'],
+  ]
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
-      <a href="#" className={styles.logo}>AC<span>.</span></a>
-
-      <ul className={styles.links}>
-        {links.map(l => (
-          <li key={l.href}>
-            <a href={l.href} className={styles.link}>{l.label}</a>
+    <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
+      <a href="#" className="logo" data-cursor="top">
+        <span className="logo-mark">AC</span>
+        <span>Andrew Cummins<span className="dot">.</span></span>
+      </a>
+      <ul className="nav-links">
+        {links.map(([id, num, label]) => (
+          <li key={id}>
+            <a href={`#${id}`} className="nav-link">
+              <span className="num">{num}</span>{label}
+            </a>
           </li>
         ))}
       </ul>
-
-      <button
-        className={`${styles.burger} ${menuOpen ? styles.open : ''}`}
-        onClick={() => setMenuOpen(v => !v)}
-        aria-label="Toggle menu"
-      >
-        <span /><span /><span />
-      </button>
-
-      {menuOpen && (
-        <div className={styles.mobileMenu}>
-          {links.map(l => (
-            <a key={l.href} href={l.href} className={styles.mobileLink} onClick={() => setMenuOpen(false)}>
-              {l.label}
-            </a>
-          ))}
-        </div>
-      )}
+      <a href={`mailto:${personal.email}`} className="nav-cta" data-cursor="email">
+        Get in touch
+      </a>
     </nav>
   )
 }

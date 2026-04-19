@@ -1,97 +1,107 @@
-import React from 'react'
-import styles from './Projects.module.css'
-import SectionHeader from './SectionHeader'
+import React, { useState, useEffect, useRef } from 'react'
+import SectionHead from './SectionHead'
 import Tag from './Tag'
 import { projects } from '../data/content'
 import { useReveal } from '../hooks/useReveal'
 
-function Badge({ type, label }) {
-  const isLive = type === 'live'
-  return (
-    <span className={`${styles.badge} ${isLive ? styles.badgeLive : styles.badgeWip}`}>
-      {isLive && <span className={styles.liveDot} />}
-      {label}
-    </span>
-  )
-}
+function AnimatedPipeline({ steps }) {
+  const [active, setActive] = useState(0)
+  const [started, setStarted] = useState(false)
+  const ref = useRef(null)
 
-function Pipeline({ steps }) {
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) setStarted(true) }, { threshold: 0.3 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!started) return
+    let step = 0
+    const tick = () => {
+      step++
+      if (step <= steps.length) {
+        setActive(step)
+        setTimeout(tick, 650)
+      } else {
+        setTimeout(() => { setActive(0); setTimeout(tick, 400) }, 2200)
+      }
+    }
+    const t = setTimeout(tick, 400)
+    return () => clearTimeout(t)
+  }, [started])
+
+  const totalSec = steps.reduce((a, s) => a + parseInt(s.time, 10), 0)
   return (
-    <div className={styles.pipeline}>
-      <p className={styles.pipelineTitle}>GitHub Actions — latest run</p>
-      {steps.map((s, i) => (
-        <div key={i} className={styles.pipelineStep}>
-          <span className={styles.stepIcon}>✓</span>
-          <span className={styles.stepLabel}>{s.label}</span>
-          <span className={styles.stepTime}>{s.time}</span>
-        </div>
-      ))}
+    <div className="pipeline" ref={ref}>
+      <div className="pipeline-head">
+        <span><span className="sha">a7c1f0e</span> ci: run suite</span>
+        <span className="right">
+          <span className="pulse-dot" style={{ background: 'var(--green)' }} />
+          passing
+        </span>
+      </div>
+      {steps.map((s, i) => {
+        const cls = i < active ? 'done' : i === active ? 'active' : ''
+        return (
+          <div key={i} className={`pipeline-step ${cls}`}>
+            <span className="step-icon">{cls === 'done' ? '✓' : cls === 'active' ? '●' : '○'}</span>
+            <span className="step-label">{s.label}</span>
+            <span className="step-time">{s.time}</span>
+          </div>
+        )
+      })}
+      <div className="pipeline-summary">
+        <span>{steps.length} jobs · {totalSec}s</span>
+        <span className="pass">✓ passed</span>
+      </div>
     </div>
   )
 }
 
-function ProjectCard({ project, delay }) {
+function ProjectCard({ project, i }) {
   const ref = useReveal()
-  const isFeatured = project.featured
-
+  const isFeat = project.featured
   return (
-    <div
-      ref={ref}
-      className={`${styles.card} ${isFeatured ? styles.featured : ''}`}
-      style={{ opacity: 0, transform: 'translateY(20px)', transition: `opacity 0.6s ${delay}ms ease, transform 0.6s ${delay}ms ease` }}
-    >
-      <div className={styles.cardInner}>
-        <div className={styles.meta}>
-          <Badge type={project.badge} label={project.badgeLabel} />
-          {isFeatured && <span className={styles.featuredLabel}>Featured</span>}
+    <article className={`p-card ${isFeat ? 'featured' : ''}`} ref={ref} data-reveal
+             style={{ '--delay': `${i * 80}ms` }} data-cursor="read">
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div className="p-meta">
+          <span className={`p-badge ${project.badge}`}>
+            <span className="dot" />
+            {project.badgeLabel}
+          </span>
+          {isFeat && <span className="p-featured-label">★ Featured</span>}
         </div>
-
-        <h3 className={styles.title}>{project.title}</h3>
-        <p className={styles.desc}>{project.desc}</p>
-
-        <div className={styles.stack}>
-          {project.stack.map(t => <Tag key={t.label} label={t.label} colour={t.colour} />)}
+        <h3 className="p-title">{project.title}</h3>
+        <p className="p-desc">{project.desc}</p>
+        <div className="p-stack">
+          {project.stack.map(([l, c]) => <Tag key={l} label={l} colour={c} />)}
         </div>
-
         {project.links.length > 0 && (
-          <div className={styles.links}>
-            {project.links.map(l => (
-              <a
-                key={l.label}
-                href={l.url}
-                target="_blank"
-                rel="noreferrer"
-                className={styles.link}
-                style={l.colour === 'green' ? { color: 'var(--green)' } : {}}
-              >
-                {l.label}
+          <div className="p-links">
+            {project.links.map((l, k) => (
+              <a key={k} href={l.url} target="_blank" rel="noreferrer"
+                 className={`p-link ${l.green ? 'green' : ''}`} data-cursor="open">
+                {l.green ? '●' : '↗'} {l.label}
               </a>
             ))}
           </div>
         )}
       </div>
-
-      {isFeatured && project.pipeline && (
-        <Pipeline steps={project.pipeline} />
-      )}
-    </div>
+      {isFeat && project.pipeline && <AnimatedPipeline steps={project.pipeline} />}
+    </article>
   )
 }
 
 export default function Projects() {
-  const headerRef = useReveal()
   return (
-    <section id="projects" className={styles.section}>
-      <div
-        ref={headerRef}
-        style={{ opacity: 0, transform: 'translateY(20px)', transition: 'opacity 0.6s ease, transform 0.6s ease' }}
-      >
-        <SectionHeader index="02" title="Portfolio frameworks" />
-      </div>
-      <div className={styles.grid}>
-        {projects.map((p, i) => (
-          <ProjectCard key={p.id} project={p} delay={i * 100} />
-        ))}
+    <section id="work" className="section alt">
+      <SectionHead idx="02 -" title="Selected work" tag="Featured + recent" />
+      <div className="projects-grid">
+        {projects.map((p, i) => <ProjectCard key={p.id} project={p} i={i} />)}
       </div>
     </section>
   )
