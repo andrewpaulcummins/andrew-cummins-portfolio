@@ -167,6 +167,8 @@ export const projects = [
     ],
     links: [
       { label: '↗ View on GitHub', url: 'https://github.com/andrewpaulcummins/warzoneSRTracker' },
+      { label: '● Live overlay',   url: 'https://warzonesrtracker.onrender.com/', colour: 'green' },
+      { label: '● SR input page',  url: 'https://warzonesrtracker.onrender.com/input.html', colour: 'green' },
     ],
   },
   {
