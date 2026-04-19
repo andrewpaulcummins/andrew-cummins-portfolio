@@ -131,9 +131,13 @@ function SectionRail() {
 function Marquee() {
   const items = [...marqueeItems, ...marqueeItems]
   return (
-    <div className="marquee-wrap" aria-hidden="true">
+    <div className="marquee" aria-hidden="true">
       <div className="marquee-track">
-        {items.map((t, i) => <span key={i} className="marquee-item">{t}</span>)}
+        {items.map((t, i) => (
+          <span key={i} className="m-item">
+            {t}<span className="m-star">★</span>
+          </span>
+        ))}
       </div>
     </div>
   )
@@ -185,8 +189,8 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <Stats />
         <Marquee />
+        <Stats />
         <Skills />
         <Projects />
         <About />
